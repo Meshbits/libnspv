@@ -90,7 +90,7 @@ function libsodium_install() {
 function libnspv_install() {
   cd $SCRIPTPATH
   rm -rf libnspv
-  git clone https://github.com/dimxy/libnspv.git
+  git clone git@github.com:Meshbits/libnspv.git
   cd libnspv
   git checkout myCC
   ./autogen.sh
@@ -113,3 +113,8 @@ openssl_install
 libevent_install
 libsodium_install
 libnspv_install
+
+if [[ -f $SCRIPTPATH/libnspv/nspv ]]; then
+  echo -e "Seems everything went well. nspv binary is available."
+  file $SCRIPTPATH/libnspv/nspv
+fi
